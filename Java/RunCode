@@ -1,0 +1,5 @@
+To compile/run Java code:
+	- Open Git Bash
+	- Go to directory
+	- "javac file_name.java" to compile
+	- "java file_name" to run

@@ -1,0 +1,12 @@
+To compile/run C code:
+	- Open Command Prompt (Not Git Bash)
+	- Go to directory
+	- "g++ -o any_name file_name.cpp" to compile
+	- "any_name" to run code
+
+Tip:
+	- when going into directories with spaces use quotes:
+		$ cd "Spring 2018"
+
+Compiler from:
+	-  https://sourceforge.net/projects/mingw-w64/

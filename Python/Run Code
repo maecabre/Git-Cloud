@@ -1,0 +1,4 @@
+To compile/run Python code
+	- Open file in Sublime
+	- go to Tools >> Build System >> Python27REPL
+	- "Ctrl + B" to run
