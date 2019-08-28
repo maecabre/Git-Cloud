@@ -1,5 +1,0 @@
-To compile/run C code:
-	- Open Command Prompt (Not Git Bash)
-	- Go to directory
-	- "gcc -o any_name file_name.c" to compile
-	- "./any_name" to run code
