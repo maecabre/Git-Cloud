@@ -1,0 +1,252 @@
+Commands
+	echo
+	clear
+	pwd
+	cd
+	ls
+	mkdir
+	touch
+	ls -l
+	wc 		=> lines, words, characters
+	cat
+	less	=> displays file to screen
+			=> press q to quit
+	head	=> displays first 10 lines
+	tail	=> displays last 10 lines
+	>		=> redirect output
+	>>		=> append to a file
+	vim
+	emacs
+	nano
+	mv
+	cp		=> use -r to copy folders
+	rm		=> use -r to rm folders
+	man
+	apropos	=> searches commands based on descritpion
+			=> ex: 'apropos editor' lists editors
+	*		=> wildcard, any amount or no amount of occurances
+
+	grep
+
+		egrep	=> grep with more functionality
+
+			Note: states.txt = file with US states in each line alphabetically
+
+			.		=> search placeholder for one character:
+						*******************************************************
+						$ egrep "i.g" states.txt
+							Virginia
+							Washington
+							West Virginia
+							Wyoming
+						*******************************************************
+			+		=> search placeholder for zero, one, or more occurances:
+						*******************************************************
+						$ egrep "s+as" states.txt
+							Arkansas
+							Kansas
+						*******************************************************
+			{#}		=> search flag for exact number of occurances in a row:
+						*******************************************************
+						$ egrep "s{2}" states.txt
+							Massachusetts
+							Mississippi
+							Missouri
+							Tennessee
+						*******************************************************
+			{#,#}	=> same as above but could be first or second number of occurances
+						*******************************************************
+						$ egrep "p{1,2}" states.txt
+							Mississippi
+							New Hampshire
+						*******************************************************
+			{#,}	=> same as above, number of occurances or more
+						*******************************************************
+						$ egrep "p{1,}" states.txt
+							Mississippi
+						New Hampshire
+						*******************************************************
+			(){#}	=> capture group in parantheses:
+						*******************************************************
+						$ egrep "(iss){2}" states.txt
+							Mississippi
+						*******************************************************
+
+			Note: using small.txt
+					-------------------------------------------------------
+					abcdefghijklmnopqrstuvwxyz
+					ABCDEFGHIJKLMNOPQRSTUVWXYZ
+					0123456789
+					aa bb cc
+					rythms
+					xyz
+					abc
+					tragedy + time = humor
+					http://www.jhsp.edu/
+					#%&-=***=-&%#
+					-------------------------------------------------------
+
+			\w 		=> metacharacter, "word" characters, searches for alphabet/numeric characters
+			\W			=> Inverse
+						*******************************************************
+						$ egrep "\w" small.txt
+							abcdefghijklmnopqrstuvwxyz
+							ABCDEFGHIJKLMNOPQRSTUVWXYZ
+							0123456789
+							aa bb cc
+							rythms
+							xyz
+							abc
+							tragedy + time = humor
+							http://www.jhsp.edu/
+
+						$ egrep "\W" small.txt
+							aa bb cc
+							tragedy + time = humor
+							http://www.jhsp.edu/
+							#%&-=***=-&%#
+						*******************************************************
+			\d 		=> metacharacter, "number" characters, searches for numbers only
+			\D 		=> Inverse
+						*******************************************************
+						$ egrep "\d" small.txt
+							(wont work on my terminal)
+
+							Alternatively:
+						$ egrep "[0-9]" small.txt
+							0123456789
+
+						$ egrep -v "[0-9]" small.txt
+							abcdefghijklmnopqrstuvwxyz
+							ABCDEFGHIJKLMNOPQRSTUVWXYZ
+							aa bb cc
+							rythms
+							xyz
+							abc
+							tragedy + time = humor
+							http://www.jhsp.edu/
+							#%&-=***=-&%#
+						*******************************************************
+			\s 		=> metacharacter, "space" characters, searches with spaces
+			\S 		=> Inverse
+						*******************************************************
+						$ egrep "\s" small.txt
+							aa bb cc
+							tragedy + time = humor
+
+						$ egrep "\S" small.txt
+							abcdefghijklmnopqrstuvwxyz
+							ABCDEFGHIJKLMNOPQRSTUVWXYZ
+							0123456789
+							aa bb cc
+							rythms
+							xyz
+							abc
+							tragedy + time = humor
+							http://www.jhsp.edu/
+							#%&-=***=-&%#
+						*******************************************************
+			-v 		=> NOT, invert flag
+						*******************************************************
+						$ egrep -v "\w" small.txt
+							#%&-=***=-&%#
+						*******************************************************
+			[]		=> custom set, CASE MATTERS, search all characters within brackets
+						*******************************************************
+						$ egrep "[Mx]" states.txt
+							Maine
+							Maryland
+							Massachusetts
+							Michigan
+							Minnesota
+							Mississippi
+							Missouri
+							Montana
+							New Mexico
+							Texas
+						*******************************************************
+			[^]		=> inverted custom set
+						*******************************************************
+						$ egrep [^aeiou] small.txt
+							abcdefghijklmnopqrstuvwxyz
+							ABCDEFGHIJKLMNOPQRSTUVWXYZ
+							0123456789
+							aa bb cc
+							rythms
+							xyz
+							abc
+							tragedy + time = humor
+							http://www.jhsp.edu/
+							#%&-=***=-&%#
+						*******************************************************
+			[-]		=> search for characters within alphabetical/numerical range
+						*******************************************************
+						$ egrep "[e-q]" small.txt
+							abcdefghijklmnopqrstuvwxyz
+							rythms
+							tragedy + time = humor
+							http://www.jhsp.edu/
+						*******************************************************
+			[]		=> custom set, CASE DOESN'T MATTER
+						*******************************************************
+						$ egrep [e-qE-Q] small.txt
+							abcdefghijklmnopqrstuvwxyz
+							ABCDEFGHIJKLMNOPQRSTUVWXYZ
+							rythms
+							tragedy + time = humor
+							http://www.jhsp.edu/
+						*******************************************************
+			\+		=> find '+' without calling metacharacter flag
+						*******************************************************
+						$ egrep "\+" small.txt
+							tragedy + time = humor
+						*******************************************************
+			^		=> search start of line only
+						*******************************************************
+						$ egrep "^a" states.txt
+							Alabama
+							Alaska
+							Arizona
+							Arkansas
+						*******************************************************
+			$		=> search end of line only
+						*******************************************************
+						$ egrep "y$" states.txt
+							Kentucky
+							New Jersey
+						*******************************************************
+
+			Note: if '$' not working, vim file and type ': set fileformat=unix' ':wq'
+
+			|		=> OR opreation
+						*******************************************************
+						$ egrep "North|South|East|West" states.txt
+							North Dakota
+							South Carolina
+							South Dakota
+							West Virginia
+						*******************************************************
+			-n 		=> flag to show line numbers of output
+						*******************************************************
+						$ egrep "North" states.txt
+							33:North Carolina
+							34:North Dakota
+						*******************************************************
+			-i 		=> flag to ignore case
+						*******************************************************
+						$ egrep -i "new" states.txt
+							New Hampshire
+							New Jersey
+							New Mexico
+							New York
+						*******************************************************
+
+	find	=> find file/directory by name recursively within your current location
+			=> $ find . -name "*.jpg"
+
+	history	=> displays history of your commands
+			=> stored in ~/.bash_history
+
+			=> ~/.bash_profile loads everytime you bring up a shell, great for aliases
+
+
