@@ -249,4 +249,19 @@ Commands
 
 			=> ~/.bash_profile loads everytime you bring up a shell, great for aliases
 
+	diff	=> shows differences between files
+	sdiff 	=> shows differences visually
+	md5		=> produce MD5 hash of file based on contents
+	shasum 	=> produce SHA-1 hash of file based on contents\
+
+	|		=> [program that produces output] | [program uses pipe output as input instead of a file]
+
+	sort	=> sorts output [punctuations, numbers, alphabetically]
+	uniq 	=> sorts output, but only when duplicates are above/below each other
+
+				Recommended:
+					=> $ cat file.txt | sort | uniq
+					or
+					=> $ cat file.txt | sort -u
+
 
