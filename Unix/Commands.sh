@@ -353,101 +353,31 @@ Unix Workbench Notes
 
 	Week 3
 
-		Logic and If/Else ------------------------------------------------------------------------
+		Logic and If/Else -------------------------------------------------------------------------
 
-				-ge 	>=
-				-eq 	=
-				-ne 	!=
-				-lt 	<
-				-le 	<=
-				-e 		file exists in current directory
-				-d 		directory exists in current directory
-				-z 		string length = 0
-				-n 		string length != 0
-				=~ 		check regex expressions
-				= 		string equal to
-				!=		string not equal to
-				! 		NOT for whole condition
+			Conditional Exectution - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-			If/Else - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+				$? = exit status
+					true = 0
+					false = 1
 
-				ex:
+				&& = AND operator
 
-					if [[ $1 -gt 4 ]]
-					then
-						echo "$1 is greater than 4"
-					else
-						echo "Not what I wanted"
-					fi
+					$ true && echo "Program 1 was executed."
+					$ false && echo "Program 2 was executed."
+						Progrm 1 was executed
 
-				ex: 
+				|| = OR operator
 
-					if [[ $1 -gt 3 ]] && [[ $1 -lt 7 ]]
-					then
-					    if [[ $1 -eq 4 ]]
-					    then
-					        echo "four"
-					    elif [[ $1 -eq 5 ]]
-					    then
-					        echo "five"
-					    else
-					        echo "six"
-					    fi
-					else
-					    echo "You entered: $1, not what I was looking for."
-					fi
-
-		Arrays ------------------------------------------------------------------------------------
-
-			Create Array:
-
-				$ plagues=(blood frogs lice flies sickness locusts)
+					$ true || echo "Program 1 was executed."
+					$ false || echo "Program 2 was executed."
+						Progrm 1 was executed
 
 
-			Access Element:
-
-				$ echo ${plagues[0]}
-					blood
 
 
-			Access All Elements:
-
-				$ echo ${plagues[*]}
-					blood frogs lice flies sickness locusts
 
 
-			Change Element:
-
-				$ plagues[4]=disease
-				$ echo ${plagues[*]}
-					blood frogs lice flies disease locusts
-
-
-			Access some elements:
-
-				...[*] : starting_index : number_of_elements
-
-				$ echo ${plagues[*]:2:3}
-					lice flies disease
-
-
-			Array Length:
-
-				$ echo ${#plagues[*]}
-					6
-
-
-			Add To Array
-
-				$ dwarfs=(grumpy sleepy sneezy doc)
-				$ dwarfs+=(bashful dopey doc)
-				$ echo ${dwarfs[*]}
-					grumpy sleepy sneezy doc bashful dopey doc
-
-
-			NOTE: Need to practice more with arrays such as removing items, using in for-loops, etc.
-
-		
 
 
 
