@@ -447,7 +447,140 @@ Unix Workbench Notes
 
 			NOTE: Need to practice more with arrays such as removing items, using in for-loops, etc.
 
-		
+
+		Sequences/Braces --------------------------------------------------------------------------
+
+			Create Sequence:
+
+				$ echo {0..9}
+					0 1 2 3 4 5 6 7 8 9
+				$ echo {W..Z}
+					W X Y Z
+
+
+			Paste to Sequence:
+
+				$ echo b{0..4}c
+					a0c a1c a2c a3c a4c
+
+
+			Combine Sequences:
+
+				$ echo {1..3}{A..C}
+					1A 1B 1C 2A 2B 2C 3A 3B 3C
+
+				$ echo {{1..3},{a..c}}
+					1 2 3 a b c
+
+
+			Variables in Sequences:
+
+				$ start=4
+				$ end=9
+				$ eval echo {$start..$end}
+					4 5 6 7 8 9
+
+
+			Strins in Sequences:
+				$ echo {Who,What,Why}
+					Who What Why
+
+		Loops -------------------------------------------------------------------------------------
+
+			For-Loops - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+				List:
+
+					for picture in img001.jpg img002.jpg img451.jpg
+					do
+					    echo "picture is equal to $picture"
+					done
+
+
+				Array:
+
+					for stooge in ${stooges[*]}
+					do
+					    echo "Current stooge: $stooge"
+					done
+
+
+				Command Substitution:
+
+					for code in $(ls)
+					do
+					    echo "$code is a bash script"
+					done
+
+
+			While-Loops - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+				Basic:
+	
+					count=3
+					while [[ $count -gt 0 ]]
+					do
+						echo "count is equal to $count"
+						let count=$count-1
+					done
+
+			Nesting - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+				Basic:
+
+					for number in {1..10}
+					do
+					  if [[ $number -lt 3 ]] || [[ $number -gt 8 ]]
+					  then
+					    echo $number
+					  fi
+					done
+
+		Functions ---------------------------------------------------------------------------------
+
+			Format:
+
+				function hello {
+					echo "Howdy do $1"
+				}
+
+
+			Calling:
+
+				$ source hello.sh
+				$ hello Mario
+					Howdy do Mario
+
+
+			Local Variables:
+
+
+				Ex Function:
+
+				function addseq {
+					sum=0	# should be local
+
+					for element in $@
+					do
+						let sum=sum+$element
+					done
+					echo $sum
+				}
+
+
+
+				If local variables aren't used, system variables could be overwritten
+
+					$ sum=4444
+					$ addseq 5 10 15 20
+					$ echo $sum
+						50			 (should be 4444)
+
+
+
+
+
+
 
 
 
