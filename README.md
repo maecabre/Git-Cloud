@@ -2,6 +2,8 @@
 
 ## This is a smaller heading
 
+View README.md to look at how to write in markdown.
+
 And as **imagination** bodies forth,
 The forms of things *unknown*, the poet's pen,
 Turns them to shapes and gives to airy nothing,
