@@ -1,8 +1,11 @@
-# This is a large heading
+# Mario Cabrera
 
-## This is a smaller heading
+## Git Cloud
 
-View README.md to look at how to write in markdown.
+This repo only conatins code I have written from online classes or other resources. Since I may or may not try my hand with many languages/courses, I thought keeping all my self-taught code in a single repo was the best idea.
+
+Here I also get to practice some markdown syntax and formatting.
+Dear future, please view this README.md to check on how to write in markdown.
 
 And as **imagination** bodies forth,
 The forms of things *unknown*, the poet's pen,
